@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form >
+      <div>
+      <label > Enter to do</label>
+      <input autofocus/>
+      <div>
+      <button type="submit" name="button">Add</button>
+    </form>
+    <script>
+      const electron = require('electron');
+      const { ipcRenderer } = electron;
+      document.querySelector('form').addEventListener('submit',(event) => {
+      event.preventDefault();
+      console.log(document.querySelector('input').innerHTML);
+      ipcRenderer.send("senTodo",document.querySelector('input').value);
+      })
+    </script>
+  </body>
+</html>
